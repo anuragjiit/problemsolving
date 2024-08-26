@@ -79,11 +79,11 @@ public class NDigitNumbers {
         int ans = 0;
         int[][] dp = new int[A+1][B+1];
 
-//        for (int i=0; i<=A; i++) {
-//            for (int j=0; j<=B; j++){
-//                dp[i][j] = -1;
-//            }
-//        }
+        for (int i=0; i<=A; i++) {
+            for (int j=0; j<=B; j++){
+                dp[i][j] = -1;
+            }
+        }
 
         for (int i=1; i<=9; i++) {
             ans+= recusive(A-1, B-i, dp);
@@ -97,9 +97,10 @@ public class NDigitNumbers {
         if (id==0 && sum==0) return 1;
         if (id==0) return 0;
 
-        if(dp[id][sum]!=0){
+        if(dp[id][sum]!=-1){
             return dp[id][sum];
         }
+
         int ans = 0;
         for (int i=0; i<=9; i++) {
             ans+= recusive(id-1, sum-i, dp);

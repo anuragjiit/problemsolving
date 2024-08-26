@@ -98,7 +98,7 @@ public class ValidBinarySearchTree {
 
         return helper(A, min, max) ? 1 : 0;
     }
-    
+
     public boolean helper(TreeNode A, int min, int max){
         if ( A==null ) {
             return true;

@@ -62,7 +62,15 @@ package com.dynamicprograming;
 
 public class UniqueBinarySearchTreesII {
     public static void main(String[] args) {
-        int A = 2;
-
+        int A = 5;    // or catalan number problem
+        int[] dp = new int[A+1];
+        dp[0] = 1;
+        dp[1] = 1;
+        for (int i=2; i<=A; i++) {
+            for (int j=0; j<i; j++) {
+                dp[i] += dp[j] * dp[i-j-1];
+            }
+        }
+        System.out.println(dp[A]);
     }
 }

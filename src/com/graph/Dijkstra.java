@@ -103,9 +103,15 @@ import java.util.PriorityQueue;
 
 public class Dijkstra {
     public static void main(String[] args) {
-        int A = 6;
-        int C = 4;
-        int[][] B = { {0, 4, 9} , {3, 4, 6}, {1, 2, 1}, {2, 5, 1}, {2, 4, 5}, {0, 3, 7}, {0, 1, 1}, {4, 5, 7}, {0, 5, 1} };
+//        int A = 6;
+//        int C = 4;
+//        int[][] B = { {0, 4, 9} , {3, 4, 6}, {1, 2, 1}, {2, 5, 1}, {2, 4, 5}, {0, 3, 7}, {0, 1, 1}, {4, 5, 7}, {0, 5, 1} };
+
+        int A = 6; //weighted undirected graph having A nodes
+        int[][] B = { {2, 5, 1}, {1, 3, 1}, {0, 5, 2}, {0, 2, 2}, {1, 4, 1}, {0, 1, 1}};
+        int C = 3; // source
+        int D = 2; // destination .. find shortest distance from C to D
+
         int n = B.length;
         int[] ans = new int[A];
         Arrays.fill(ans, Integer.MAX_VALUE);
@@ -133,6 +139,11 @@ public class Dijkstra {
             Pair current = pq.poll();
             int v = current.v;
 
+            if (v==D) {
+                System.out.println(ans[D]);
+                System.exit(0);
+            }
+
             if (visited[v] == true) {
                 continue;
             }
@@ -141,7 +152,6 @@ public class Dijkstra {
             ArrayList<Pair> children1 = graph[v];
 
             for (Pair child : children1) {
-
                 int currentWt = ans[v] + child.wt;
 
                 if (currentWt < ans[child.v]) {
